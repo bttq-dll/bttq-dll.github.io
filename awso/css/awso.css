@@ -5,7 +5,7 @@
   font-style: normal;
   font-stretch: normal;
   font-display: swap;
-  src: url(f/HeadingNowVariable.woff2) format("woff2");
+  src: url(https://lobby.mom/_awso/assets/f/HeadingNowVariable.woff2) format("woff2");
   /* Unicode ranges remain the same */
 }
 @font-face {
@@ -132,7 +132,7 @@ body {
   background-size: contain;
   background-position: center center;
   background-repeat: repeat;
-  background-image: url("../assets/grid.png");
+  background-image: url("https://lobby.mom/_awso/assets/grid.png");
   line-height: 1.7em;
   font-variation-settings: "wdth" 650, "wght" 725;
   -webkit-font-smoothing: antialiased;
@@ -435,7 +435,7 @@ h6 {
 }
 
 .fnlb {
-  background: #000 url("../assets/blue-plain.gif") no-repeat;
+  background: #000 url("https://lobby.mom/_awso/assets/blue-plain.gif") no-repeat;
   border: none;
   color: #fff;
   font-weight: 725;
