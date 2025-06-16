@@ -1,1 +1,203 @@
-soon.
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Basic metadata for character encoding and responsive design -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- SEO metadata -->
+  <title>Free Fortnite Lobby Bots - LOBBYMOM</title>
+  <meta name="description"
+    content="Get instant access to free Fortnite lobby bots! Copy bot names to invite them to your lobby. Refreshed every 30 seconds. Part of FNLB.">
+  <meta name="keywords" content="fortnite bots, lobby bots, free fortnite, fnlb, lobby.mom, fortnite lobby, bot names">
+  <meta name="author" content="LOBBYMOM">
+  <meta name="robots" content="index, follow">
+
+  <!-- General theme color (Chrome, Firefox OS, etc.) -->
+  <meta name="theme-color" content="#00C6FF">
+
+  <!-- Open Graph (Facebook, LinkedIn, WhatsApp, etc.) -->
+  <meta property="og:theme-color" content="#00C6FF">
+  <meta property="og:color" content="#00C6FF">
+
+  <!-- Twitter -->
+  <meta name="twitter:widgets:theme" content="light">
+  <meta name="twitter:widgets:link-color" content="#00C6FF">
+  <meta name="twitter:widgets:border-color" content="#00C6FF">
+
+  <!-- Social media preview: Open Graph (Facebook) -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://lobby.mom/">
+  <meta property="og:title" content="Free Fortnite Lobby Bots - LOBBYMOM">
+  <meta property="og:description"
+    content="Get instant access to free Fortnite lobby bots! Copy bot names to invite them to your lobby. Refreshed every 30 seconds.">
+  <meta property="og:image" content="https://lobby.mom/_awso/assets/LOBBYMOM.png">
+
+  <!-- Social media preview: Twitter -->
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:url" content="https://lobby.mom/">
+  <meta property="twitter:title" content="Free Fortnite Lobby Bots - LOBBYMOM">
+  <meta property="twitter:description"
+    content="Get instant access to free Fortnite lobby bots! Copy bot names to invite them to your lobby. Refreshed every 30 seconds.">
+  <meta property="twitter:image" content="https://lobby.mom/_awso/assets/LOBBYMOM.png">
+
+  <!-- Website icon (favicon) -->
+  <link rel="icon" type="image/png" href="_awso/assets/LOBBYMOM.png">
+
+  <!-- Bootstrap 5.3 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Font Awesome (icons) -->
+  <link rel="stylesheet" href="https://paycoin-php.vercel.app/assets/css/fontawesome.css">
+
+  <!-- Custom styles -->
+  <link rel="stylesheet" href="_awso/css/awso.css">
+</head>
+<body class="d-flex justify-content-center align-items-center" style="height: 100vh;">
+
+<div class="text-center">
+    <img src="_awso/assets/loading.png" alt="Coming Soon" class="img-fluid" style="max-width: 300px;">
+    <h6 class="mt-3">Coming Soon..</h6>
+    <button id="notifyBtn" class="notify-btn">
+        <span id="btnText">GET NOTIFIED</span>
+        <i class="fa-solid fa-bell ms-1"></i>
+    </button>
+    <p class="status-text mt-2" id="statusText">We'll alert you when we launch</p>
+</div>
+
+<style>
+.notify-btn {
+  background: #d3d2d8;
+  border-color: #d3d2d8;
+  font-weight: 725;
+  border-radius: 13px;
+  line-height: 1.9;
+  font-family: HeadingNowVariable, sans-serif;
+  color: #100f17;
+  text-transform: uppercase;
+  font-size: 16px;
+  font-variation-settings: "wdth" 650, "wght" 725;
+  cursor: pointer;
+  outline-width: 0;
+  outline-color: transparent;
+  outline-offset: 10px;
+  outline-style: solid;
+  transition-duration: 0.15s;
+  transition-property: outline-color, outline-offset, outline-width;
+  transition-timing-function: ease-out;
+  padding: 7px 16px 2px;
+  border: none;
+  display: inline-flex;
+  align-items: center;
+}
+
+.notify-btn:hover {
+  background: #fff;
+  border-color: #fff;
+  color: #100f17;
+  outline-color: rgba(255, 255, 255, 0.8);
+  outline-offset: 3px;
+  outline-width: 3px;
+}
+
+.notify-btn:active {
+  transform: scale(0.96);
+  background-color: #fff;
+}
+
+.notify-btn.subscribed {
+  background: #100f17;
+  color: #d3d2d8;
+}
+
+.notify-btn.subscribed:hover {
+  background: #100f17;
+  color: #fff;
+  outline-color: rgba(16, 15, 23, 0.8);
+}
+
+.status-text {
+  font-family: HeadingNowVariable, sans-serif;
+  font-size: 14px;
+  color: #d3d2d8;
+  font-variation-settings: "wdth" 600, "wght" 400;
+}
+
+.status-text.active {
+  color: #fff;
+  font-variation-settings: "wdth" 600, "wght" 600;
+}
+</style>
+
+<script>
+const notifyBtn = document.getElementById('notifyBtn');
+const statusText = document.getElementById('statusText');
+const btnText = document.getElementById('btnText');
+
+// Check existing subscription
+if (localStorage.getItem('launchNotificationSubscribed') === 'true') {
+    setSubscribedState(true);
+}
+
+notifyBtn.addEventListener('click', async () => {
+    if (Notification.permission === 'granted' && localStorage.getItem('launchNotificationSubscribed') === 'true') {
+        setSubscribedState(false);
+        localStorage.removeItem('launchNotificationSubscribed');
+        statusText.textContent = "Notifications disabled";
+        setTimeout(() => statusText.textContent = "We'll alert you when we launch", 2000);
+    } else {
+        const permission = await Notification.requestPermission();
+        
+        if (permission === 'granted') {
+            setSubscribedState(true);
+            localStorage.setItem('launchNotificationSubscribed', 'true');
+            
+            // Send confirmation notification
+            new Notification("You're subscribed!", {
+                body: "We'll notify you when we launch.",
+                icon: "_awso/assets/loading.png"
+            });
+        } else {
+            statusText.textContent = "Please enable browser notifications";
+            statusText.classList.add('text-warning');
+            setTimeout(() => {
+                statusText.textContent = "We'll alert you when we launch";
+                statusText.classList.remove('text-warning');
+            }, 3000);
+        }
+    }
+});
+
+function setSubscribedState(isSubscribed) {
+    if (isSubscribed) {
+        notifyBtn.classList.add('subscribed');
+        btnText.textContent = "UNSUBSCRIBE";
+        statusText.textContent = "✓ Notification active";
+        statusText.classList.add('active');
+    } else {
+        notifyBtn.classList.remove('subscribed');
+        btnText.textContent = "GET NOTIFIED";
+        statusText.textContent = "We'll alert you when we launch";
+        statusText.classList.remove('active');
+    }
+}
+
+// Call this when your site launches
+function sendLaunchNotification() {
+    if (localStorage.getItem('launchNotificationSubscribed') === 'true') {
+        new Notification("We're Live!", {
+            body: "Our service has officially launched!",
+            icon: "_awso/assets/loading.png",
+            requireInteraction: true
+        });
+    }
+}
+</script>
+
+ <!-- JS dependencies -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+
+</html>
