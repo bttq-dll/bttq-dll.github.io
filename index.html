@@ -55,7 +55,21 @@
   <link rel="stylesheet" href="https://lobby.mom/awso/css/awso.css">
   <link rel="stylesheet" href="cs.css">
 </head>
-
+<style>
+    /* Add this at the end of your existing CSS */
+  @media (max-width: 768px) {
+    .bot-avatar {
+      border-radius: 50%;
+      overflow: hidden;
+    }
+    .bot-avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+</style>
+  
 <body>
   <div class="center-content">
     <div class="text-center">
