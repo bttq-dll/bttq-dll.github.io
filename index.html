@@ -104,194 +104,180 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   
   <!-- Custom Script -->
-  <script>
-    // Bot data
-    const allBots = [
-    "LOBBY.MOM.ZQXR", "LOBBY.MOM.XVNL", "LOBBY.MOM.Q8TY", "LOBBY.MOM.JY3F", "LOBBY.MOM.WKRP", "LOBBY.MOM.NX7Q", "LOBBY.MOM.ML4Z", "LOBBY.MOM.RDU2", "LOBBY.MOM.HCVE", "LOBBY.MOM.TL9K", "LOBBY.MOM.VGEX", "LOBBY.MOM.KYND", "LOBBY.MOM.PW8R", "LOBBY.MOM.BAZQ", "LOBBY.MOM.C3LN", "LOBBY.MOM.VFJ5",
+<script>
+  // Bot data
+  const allBots = [
+    "LOBBY.MOM.ZQXR", "LOBBY.MOM.XVNL", "LOBBY.MOM.Q8TY", "LOBBY.MOM.JY3F", 
+    "LOBBY.MOM.WKRP", "LOBBY.MOM.NX7Q", "LOBBY.MOM.ML4Z", "LOBBY.MOM.RDU2", 
+    "LOBBY.MOM.HCVE", "LOBBY.MOM.TL9K", "LOBBY.MOM.VGEX", "LOBBY.MOM.KYND", 
+    "LOBBY.MOM.PW8R", "LOBBY.MOM.BAZQ", "LOBBY.MOM.C3LN", "LOBBY.MOM.VFJ5"
+  ];
 
-    ];
+  // DOM Elements
+  const botCardsContainer = document.getElementById('botCardsContainer');
+  const timerButton = document.getElementById('timerButton');
+  const countdownElement = document.getElementById('countdown');
+  const progressBar = document.getElementById('progressBar');
+  
+  // Mobile detection
+  function isMobile() {
+    return window.innerWidth <= 768;
+  }
 
-    // DOM Elements
-    const botCardsContainer = document.getElementById('botCardsContainer');
-    const timerButton = document.getElementById('timerButton');
-    const countdownElement = document.getElementById('countdown');
-    const progressBar = document.getElementById('progressBar');
+  // Helper function to shuffle and pick random bots
+  function getRandomBots(count = 4) {
+    const shuffled = [...allBots].sort(() => Math.random() - 0.5);
+    return shuffled.slice(0, count);
+  }
+
+  // Function to render random bots as cards
+  function renderRandomBots() {
+    botCardsContainer.innerHTML = '';
+    const randomBots = getRandomBots();
+    const mobile = isMobile();
     
-    // Notification element
-    const notification = document.createElement('div');
-    notification.className = 'copied-notification';
-    notification.textContent = 'Username copied to clipboard!';
-    document.body.appendChild(notification);
-    
-    // Style notification
-    notification.style.position = 'fixed';
-    notification.style.bottom = '20px';
-    notification.style.left = '50%';
-    notification.style.transform = 'translateX(-50%)';
-    notification.style.backgroundColor = 'rgba(0, 162, 97, 0.9)';
-    notification.style.color = 'white';
-    notification.style.padding = '10px 20px';
-    notification.style.borderRadius = '5px';
-    notification.style.zIndex = '1000';
-    notification.style.opacity = '0';
-    notification.style.transition = 'opacity 0.3s ease';
-    notification.style.pointerEvents = 'none';
-    
-    let countdown = 30;
-    let timerInterval;
-    
-    // Helper function to shuffle and pick random bots
-    function getRandomBots(count = 4) {
-      // Shuffle the entire bot pool
-      const shuffled = [...allBots].sort(() => Math.random() - 0.5);
-      // Return the first count
-      return shuffled.slice(0, count);
-    }
-    
-    // Function to render random bots as cards
-    function renderRandomBots() {
-      botCardsContainer.innerHTML = '';
-      
-      const randomBots = getRandomBots();
-      
-      randomBots.forEach(bot => {
-        const botCard = document.createElement('div');
-        botCard.className = 'bot-card';
-        botCard.innerHTML = `
-          <div class="bot-avatar">
-            <img src="https://static.wikia.nocookie.net/fortnite_gamepedia/images/1/15/RemedyVsToxin.png" alt="${bot}">
+    randomBots.forEach(bot => {
+      const botCard = document.createElement('div');
+      botCard.className = 'bot-card';
+      botCard.innerHTML = `
+        ${!mobile ? `<div class="bot-avatar">
+          <img src="https://static.wikia.nocookie.net/fortnite_gamepedia/images/1/15/RemedyVsToxin.png" alt="${bot}">
+        </div>` : ''}
+        <div class="bot-info">
+          <div class="bot-name">${bot}</div>
+          <div class="bot-status">
+            <span class="badge badge-light-success fs-8 fw-bold"><img src="https://lobby.mom/awso/assets/user-status.png" width="16px"> ONLINE</span> 
+            <i class="fa-duotone fa-solid fa-circle-dot fnlb-badge"></i> 
+            <span class="badge badge-light-primary fs-8 fw-bold"><img src="https://lobby.mom/awso/assets/available.png" width="16px"> AVAILABLE</span>
           </div>
-          <div class="bot-info">
-            <div class="bot-name">${bot}</div>
-            <div class="bot-status">
-<span class="badge badge-light-success fs-8 fw-bold"><img src="https://lobby.mom/awso/assets/user-status.png" width="16px"> ONLINE</span> <i class="fa-duotone fa-solid fa-circle-dot fnlb-badge"></i> <span class="badge badge-light-primary fs-8 fw-bold"><img src="https://lobby.mom/awso/assets/available.png" width="16px"> AVAILABLE</span>
-            </div>
-          </div>
-          <div class="bot-action">
-            <button class="btn btn-primary btn-sm copy-btn" data-username="${bot}">
-              <i class="fa-solid fa-copy"></i>
-            </button>
-          </div>
-        `;
-        botCardsContainer.appendChild(botCard);
-      });
-      
-      // Add event listeners to new buttons
-      document.querySelectorAll('.copy-btn').forEach(button => {
-        button.addEventListener('click', function() {
-          const username = this.getAttribute('data-username');
-          copyToClipboard(username);
-        });
-      });
-    }
-    
-    // Function to copy to clipboard
-    function copyToClipboard(text) {
-      navigator.clipboard.writeText(text)
-        .then(() => {
-          // Show notification
-          notification.style.opacity = '1';
-          setTimeout(() => {
-            notification.style.opacity = '0';
-          }, 2000);
-        })
-        .catch(err => {
-          console.error('Failed to copy: ', err);
-        });
-    }
-    
-    // Function to start the countdown
-    function startCountdown() {
-      clearInterval(timerInterval);
-      countdown = 10;
-      updateCountdownDisplay();
-      
-      timerInterval = setInterval(() => {
-        countdown--;
-        updateCountdownDisplay();
-        
-        if (countdown <= 0) {
-          renderRandomBots(); // Show new random bots on timer end
-          countdown = 10;
-        }
-      }, 1000);
-    }
-    
-    // Function to update countdown display
-    function updateCountdownDisplay() {
-      countdownElement.textContent = countdown;
-      const progressPercentage = 100 - (countdown / 10) * 100;
-      progressBar.style.width = `${progressPercentage}%`;
-    }
-    
-    // Initialize with random bots
-    renderRandomBots();
-    startCountdown();
-    
-    // Notification button functionality
-    const notifyBtn = document.getElementById('notifyBtn');
-    const statusText = document.getElementById('statusText');
-    const btnText = document.getElementById('btnText');
-    
-    // Check existing subscription
-    if (localStorage.getItem('launchNotificationSubscribed') === 'true') {
-      setSubscribedState(true);
-    }
-    
-    notifyBtn.addEventListener('click', async () => {
-      if (Notification.permission === 'granted' && localStorage.getItem('launchNotificationSubscribed') === 'true') {
-        setSubscribedState(false);
-        localStorage.removeItem('launchNotificationSubscribed');
-        statusText.textContent = "Notifications disabled";
-        setTimeout(() => statusText.textContent = "We'll alert you when we launch", 2000);
-      } else {
-        const permission = await Notification.requestPermission();
-        
-        if (permission === 'granted') {
-          setSubscribedState(true);
-          localStorage.setItem('launchNotificationSubscribed', 'true');
-          
-          // Send confirmation notification
-          new Notification("You're subscribed!", {
-            body: "We'll notify you when we launch.",
-            icon: "https://lobby.mom/awso/assets/loading.png"
-          });
-        } else {
-          statusText.textContent = "Please enable browser notifications";
-          statusText.classList.add('text-warning');
-          setTimeout(() => {
-            statusText.textContent = "We'll alert you when we launch";
-            statusText.classList.remove('text-warning');
-          }, 3000);
-        }
-      }
+        </div>
+        <div class="bot-action">
+          <button class="btn btn-primary btn-sm copy-btn" data-username="${bot}">
+            <i class="fa-solid fa-copy"></i>
+          </button>
+        </div>
+      `;
+      botCardsContainer.appendChild(botCard);
     });
     
-    function setSubscribedState(isSubscribed) {
-      if (isSubscribed) {
-        notifyBtn.classList.add('subscribed');
-        btnText.textContent = "UNSUBSCRIBE";
-        statusText.textContent = "✓ Notification active";
-        statusText.classList.add('active');
-      } else {
-        notifyBtn.classList.remove('subscribed');
-        btnText.textContent = "GET NOTIFIED";
-        statusText.textContent = "We'll alert you when we launch";
-        statusText.classList.remove('active');
-      }
-    }
+    // Add event listeners to new buttons
+    document.querySelectorAll('.copy-btn').forEach(button => {
+      button.addEventListener('click', function() {
+        const username = this.getAttribute('data-username');
+        copyToClipboard(username);
+      });
+    });
+  }
+
+  // Function to copy to clipboard
+  function copyToClipboard(text) {
+    navigator.clipboard.writeText(text)
+      .then(() => {
+        showNotification('Username copied to clipboard!');
+      })
+      .catch(err => {
+        console.error('Failed to copy: ', err);
+      });
+  }
+
+  // Function to show notification
+  function showNotification(message) {
+    const notification = document.createElement('div');
+    notification.className = 'copied-notification';
+    notification.textContent = message;
+    document.body.appendChild(notification);
     
-    // Call this when your site launches
-    function sendLaunchNotification() {
-      if (localStorage.getItem('launchNotificationSubscribed') === 'true') {
-        new Notification("We're Live!", {
-          body: "Our service has officially launched!",
-          icon: "https://lobby.mom/awso/assets/loading.png",
-          requireInteraction: true
+    setTimeout(() => {
+      notification.remove();
+    }, 2000);
+  }
+
+  // Countdown functionality
+  let countdown = 30;
+  let timerInterval;
+  
+  function startCountdown() {
+    clearInterval(timerInterval);
+    countdown = 30;
+    updateCountdownDisplay();
+    
+    timerInterval = setInterval(() => {
+      countdown--;
+      updateCountdownDisplay();
+      
+      if (countdown <= 0) {
+        renderRandomBots();
+        countdown = 30;
+      }
+    }, 1000);
+  }
+
+  function updateCountdownDisplay() {
+    countdownElement.textContent = countdown;
+    const progressPercentage = 100 - (countdown / 30) * 100;
+    progressBar.style.width = `${progressPercentage}%`;
+  }
+
+  // Notification button functionality
+  const notifyBtn = document.getElementById('notifyBtn');
+  const statusText = document.getElementById('statusText');
+  const btnText = document.getElementById('btnText');
+  
+  // Check existing subscription
+  if (localStorage.getItem('launchNotificationSubscribed') === 'true') {
+    setSubscribedState(true);
+  }
+  
+  notifyBtn.addEventListener('click', async () => {
+    if (Notification.permission === 'granted' && localStorage.getItem('launchNotificationSubscribed') === 'true') {
+      setSubscribedState(false);
+      localStorage.removeItem('launchNotificationSubscribed');
+      statusText.textContent = "Notifications disabled";
+      setTimeout(() => statusText.textContent = "We'll alert you when we launch", 2000);
+    } else {
+      const permission = await Notification.requestPermission();
+      
+      if (permission === 'granted') {
+        setSubscribedState(true);
+        localStorage.setItem('launchNotificationSubscribed', 'true');
+        
+        // Send confirmation notification
+        new Notification("You're subscribed!", {
+          body: "We'll notify you when we launch.",
+          icon: "https://lobby.mom/awso/assets/loading.png"
         });
+      } else {
+        statusText.textContent = "Please enable browser notifications";
+        statusText.classList.add('text-warning');
+        setTimeout(() => {
+          statusText.textContent = "We'll alert you when we launch";
+          statusText.classList.remove('text-warning');
+        }, 3000);
       }
     }
-  </script>
+  });
+  
+  function setSubscribedState(isSubscribed) {
+    if (isSubscribed) {
+      notifyBtn.classList.add('subscribed');
+      btnText.textContent = "UNSUBSCRIBE";
+      statusText.textContent = "✓ Notification active";
+      statusText.classList.add('active');
+    } else {
+      notifyBtn.classList.remove('subscribed');
+      btnText.textContent = "GET NOTIFIED";
+      statusText.textContent = "We'll alert you when we launch";
+      statusText.classList.remove('active');
+    }
+  }
+
+  // Handle window resize
+  window.addEventListener('resize', renderRandomBots);
+
+  // Initialize
+  renderRandomBots();
+  startCountdown();
+</script>
 
 
  <!-- JS dependencies -->
