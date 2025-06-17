@@ -32,7 +32,7 @@
   <meta property="og:title" content="Free Fortnite Lobby Bots - LOBBYMOM">
   <meta property="og:description"
     content="Get instant access to free Fortnite lobby bots! Copy bot names to invite them to your lobby. Refreshed every 30 seconds.">
-  <meta property="og:image" content="https://lobby.mom/awso/assets/LOBBYMOM.png">
+  <meta property="og:image" content="https://lobby.mom/_awso/assets/LOBBYMOM.png">
 
   <!-- Social media preview: Twitter -->
   <meta property="twitter:card" content="summary_large_image">
@@ -40,10 +40,10 @@
   <meta property="twitter:title" content="Free Fortnite Lobby Bots - LOBBYMOM">
   <meta property="twitter:description"
     content="Get instant access to free Fortnite lobby bots! Copy bot names to invite them to your lobby. Refreshed every 30 seconds.">
-  <meta property="twitter:image" content="https://lobby.mom/awso/assets/LOBBYMOM.png">
+  <meta property="twitter:image" content="https://lobby.mom/_awso/assets/LOBBYMOM.png">
 
   <!-- Website icon (favicon) -->
-  <link rel="icon" type="image/png" href="https://lobby.mom/awso/assets/LOBBYMOM.png">
+  <link rel="icon" type="image/png" href="_awso/assets/LOBBYMOM.png">
 
   <!-- Bootstrap 5.3 CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -52,148 +52,237 @@
   <link rel="stylesheet" href="https://paycoin-php.vercel.app/assets/css/fontawesome.css">
 
   <!-- Custom styles -->
-  <link rel="stylesheet" href="https://lobby.mom/awso/css/awso.css">
+  <link rel="stylesheet" href="_awso/css/awso.css">
+  <link rel="stylesheet" href="cs.css">
 </head>
-<body class="d-flex justify-content-center align-items-center" style="height: 100vh;">
 
-<div class="text-center">
-    <img src="https://lobby.mom/awso/assets/loading.png" alt="Coming Soon" class="img-fluid" style="max-width: 300px;">
-    <h6 class="mt-3">Coming Soon..</h6>
-    <button id="notifyBtn" class="notify-btn">
+<body>
+  <div class="center-content">
+    <div class="text-center">
+      <img src="_awso/assets/loading.png" alt="Coming Soon" class="img-fluid" style="max-width: 300px;">
+      <h6 class="mt-3">Coming Soon..</h6>
+      <button id="notifyBtn" class="notify-btn">
         <span id="btnText">GET NOTIFIED</span>
         <i class="fa-solid fa-bell ms-1"></i>
-    </button>
-    <p class="status-text mt-2" id="statusText">We'll alert you when we launch</p>
-</div>
+      </button>
+      <p class="status-text mt-2" id="statusText">We'll alert you when we launch</p>
+    </div>
+  </div>
+  
+  <!-- Bot Preview Section -->
+  <div class="bot-preview">
+    <h6 class="bot-preview-title">Current Available Bots</h3>
+    
+    <div class="bot-cards" id="botCardsContainer">
+      <!-- Bot cards will be generated here -->
+    </div>
+    
+    <div class="timer-section">
+      <div class="timer-container">
+        <button id="timerButton"  class="btn btn-primary" type="button" disabled>
+          <img src="_awso/assets/timer.png" width="20px"> 
+          Next bots in <span id="countdown">30</span> seconds..
+        </button>
+        <div class="progress" role="progressbar">
+          <div id="progressBar" class="progress-bar progress-bar-striped progress-bar-animated" style="width: 0%"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- JS dependencies -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  
+  <!-- Custom Script -->
+  <script>
+    // Bot data
+    const allBots = [
+    "LOBBY.MOM.ZQXR", "LOBBY.MOM.XVNL", "LOBBY.MOM.Q8TY", "LOBBY.MOM.JY3F", "LOBBY.MOM.WKRP", "LOBBY.MOM.NX7Q", "LOBBY.MOM.ML4Z", "LOBBY.MOM.RDU2", "LOBBY.MOM.HCVE", "LOBBY.MOM.TL9K", "LOBBY.MOM.VGEX", "LOBBY.MOM.KYND", "LOBBY.MOM.PW8R", "LOBBY.MOM.BAZQ", "LOBBY.MOM.C3LN", "LOBBY.MOM.VFJ5",
 
-<style>
-.notify-btn {
-  background: #d3d2d8;
-  border-color: #d3d2d8;
-  font-weight: 725;
-  border-radius: 13px;
-  line-height: 1.9;
-  font-family: HeadingNowVariable, sans-serif;
-  color: #100f17;
-  text-transform: uppercase;
-  font-size: 16px;
-  font-variation-settings: "wdth" 650, "wght" 725;
-  cursor: pointer;
-  outline-width: 0;
-  outline-color: transparent;
-  outline-offset: 10px;
-  outline-style: solid;
-  transition-duration: 0.15s;
-  transition-property: outline-color, outline-offset, outline-width;
-  transition-timing-function: ease-out;
-  padding: 7px 16px 2px;
-  border: none;
-  display: inline-flex;
-  align-items: center;
-}
+    ];
 
-.notify-btn:hover {
-  background: #fff;
-  border-color: #fff;
-  color: #100f17;
-  outline-color: rgba(255, 255, 255, 0.8);
-  outline-offset: 3px;
-  outline-width: 3px;
-}
-
-.notify-btn:active {
-  transform: scale(0.96);
-  background-color: #fff;
-}
-
-.notify-btn.subscribed {
-  background: #100f17;
-  color: #d3d2d8;
-}
-
-.notify-btn.subscribed:hover {
-  background: #100f17;
-  color: #fff;
-  outline-color: rgba(16, 15, 23, 0.8);
-}
-
-.status-text {
-  font-family: HeadingNowVariable, sans-serif;
-  font-size: 14px;
-  color: #d3d2d8;
-  font-variation-settings: "wdth" 600, "wght" 400;
-}
-
-.status-text.active {
-  color: #fff;
-  font-variation-settings: "wdth" 600, "wght" 600;
-}
-</style>
-
-<script>
-const notifyBtn = document.getElementById('notifyBtn');
-const statusText = document.getElementById('statusText');
-const btnText = document.getElementById('btnText');
-
-// Check existing subscription
-if (localStorage.getItem('launchNotificationSubscribed') === 'true') {
-    setSubscribedState(true);
-}
-
-notifyBtn.addEventListener('click', async () => {
-    if (Notification.permission === 'granted' && localStorage.getItem('launchNotificationSubscribed') === 'true') {
+    // DOM Elements
+    const botCardsContainer = document.getElementById('botCardsContainer');
+    const timerButton = document.getElementById('timerButton');
+    const countdownElement = document.getElementById('countdown');
+    const progressBar = document.getElementById('progressBar');
+    
+    // Notification element
+    const notification = document.createElement('div');
+    notification.className = 'copied-notification';
+    notification.textContent = 'Username copied to clipboard!';
+    document.body.appendChild(notification);
+    
+    // Style notification
+    notification.style.position = 'fixed';
+    notification.style.bottom = '20px';
+    notification.style.left = '50%';
+    notification.style.transform = 'translateX(-50%)';
+    notification.style.backgroundColor = 'rgba(0, 162, 97, 0.9)';
+    notification.style.color = 'white';
+    notification.style.padding = '10px 20px';
+    notification.style.borderRadius = '5px';
+    notification.style.zIndex = '1000';
+    notification.style.opacity = '0';
+    notification.style.transition = 'opacity 0.3s ease';
+    notification.style.pointerEvents = 'none';
+    
+    let countdown = 30;
+    let timerInterval;
+    
+    // Helper function to shuffle and pick random bots
+    function getRandomBots(count = 4) {
+      // Shuffle the entire bot pool
+      const shuffled = [...allBots].sort(() => Math.random() - 0.5);
+      // Return the first count
+      return shuffled.slice(0, count);
+    }
+    
+    // Function to render random bots as cards
+    function renderRandomBots() {
+      botCardsContainer.innerHTML = '';
+      
+      const randomBots = getRandomBots();
+      
+      randomBots.forEach(bot => {
+        const botCard = document.createElement('div');
+        botCard.className = 'bot-card';
+        botCard.innerHTML = `
+          <div class="bot-avatar">
+            <img src="https://static.wikia.nocookie.net/fortnite_gamepedia/images/1/15/RemedyVsToxin.png" alt="${bot}">
+          </div>
+          <div class="bot-info">
+            <div class="bot-name">${bot}</div>
+            <div class="bot-status">
+<span class="badge badge-light-success fs-8 fw-bold"><img src="_awso/assets/user-status.png" width="16px"> ONLINE</span> <i class="fa-duotone fa-solid fa-circle-dot fnlb-badge"></i> <span class="badge badge-light-primary fs-8 fw-bold"><img src="_awso/assets/available.png" width="16px"> AVAILABLE</span>
+            </div>
+          </div>
+          <div class="bot-action">
+            <button class="btn btn-primary btn-sm copy-btn" data-username="${bot}">
+              <i class="fa-solid fa-copy"></i>
+            </button>
+          </div>
+        `;
+        botCardsContainer.appendChild(botCard);
+      });
+      
+      // Add event listeners to new buttons
+      document.querySelectorAll('.copy-btn').forEach(button => {
+        button.addEventListener('click', function() {
+          const username = this.getAttribute('data-username');
+          copyToClipboard(username);
+        });
+      });
+    }
+    
+    // Function to copy to clipboard
+    function copyToClipboard(text) {
+      navigator.clipboard.writeText(text)
+        .then(() => {
+          // Show notification
+          notification.style.opacity = '1';
+          setTimeout(() => {
+            notification.style.opacity = '0';
+          }, 2000);
+        })
+        .catch(err => {
+          console.error('Failed to copy: ', err);
+        });
+    }
+    
+    // Function to start the countdown
+    function startCountdown() {
+      clearInterval(timerInterval);
+      countdown = 30;
+      updateCountdownDisplay();
+      
+      timerInterval = setInterval(() => {
+        countdown--;
+        updateCountdownDisplay();
+        
+        if (countdown <= 0) {
+          renderRandomBots(); // Show new random bots on timer end
+          countdown = 30;
+        }
+      }, 1000);
+    }
+    
+    // Function to update countdown display
+    function updateCountdownDisplay() {
+      countdownElement.textContent = countdown;
+      const progressPercentage = 100 - (countdown / 30) * 100;
+      progressBar.style.width = `${progressPercentage}%`;
+    }
+    
+    // Initialize with random bots
+    renderRandomBots();
+    startCountdown();
+    
+    // Notification button functionality
+    const notifyBtn = document.getElementById('notifyBtn');
+    const statusText = document.getElementById('statusText');
+    const btnText = document.getElementById('btnText');
+    
+    // Check existing subscription
+    if (localStorage.getItem('launchNotificationSubscribed') === 'true') {
+      setSubscribedState(true);
+    }
+    
+    notifyBtn.addEventListener('click', async () => {
+      if (Notification.permission === 'granted' && localStorage.getItem('launchNotificationSubscribed') === 'true') {
         setSubscribedState(false);
         localStorage.removeItem('launchNotificationSubscribed');
         statusText.textContent = "Notifications disabled";
         setTimeout(() => statusText.textContent = "We'll alert you when we launch", 2000);
-    } else {
+      } else {
         const permission = await Notification.requestPermission();
         
         if (permission === 'granted') {
-            setSubscribedState(true);
-            localStorage.setItem('launchNotificationSubscribed', 'true');
-            
-            // Send confirmation notification
-            new Notification("You're subscribed!", {
-                body: "We'll notify you when we launch.",
-                icon: "https://lobby.mom/awso/assets/loading.png"
-            });
+          setSubscribedState(true);
+          localStorage.setItem('launchNotificationSubscribed', 'true');
+          
+          // Send confirmation notification
+          new Notification("You're subscribed!", {
+            body: "We'll notify you when we launch.",
+            icon: "_awso/assets/loading.png"
+          });
         } else {
-            statusText.textContent = "Please enable browser notifications";
-            statusText.classList.add('text-warning');
-            setTimeout(() => {
-                statusText.textContent = "We'll alert you when we launch";
-                statusText.classList.remove('text-warning');
-            }, 3000);
+          statusText.textContent = "Please enable browser notifications";
+          statusText.classList.add('text-warning');
+          setTimeout(() => {
+            statusText.textContent = "We'll alert you when we launch";
+            statusText.classList.remove('text-warning');
+          }, 3000);
         }
-    }
-});
-
-function setSubscribedState(isSubscribed) {
-    if (isSubscribed) {
+      }
+    });
+    
+    function setSubscribedState(isSubscribed) {
+      if (isSubscribed) {
         notifyBtn.classList.add('subscribed');
         btnText.textContent = "UNSUBSCRIBE";
         statusText.textContent = "✓ Notification active";
         statusText.classList.add('active');
-    } else {
+      } else {
         notifyBtn.classList.remove('subscribed');
         btnText.textContent = "GET NOTIFIED";
         statusText.textContent = "We'll alert you when we launch";
         statusText.classList.remove('active');
+      }
     }
-}
-
-// Call this when your site launches
-function sendLaunchNotification() {
-    if (localStorage.getItem('launchNotificationSubscribed') === 'true') {
+    
+    // Call this when your site launches
+    function sendLaunchNotification() {
+      if (localStorage.getItem('launchNotificationSubscribed') === 'true') {
         new Notification("We're Live!", {
-            body: "Our service has officially launched!",
-            icon: "https://lobby.mom/awso/assets/loading.png",
-            requireInteraction: true
+          body: "Our service has officially launched!",
+          icon: "_awso/assets/loading.png",
+          requireInteraction: true
         });
+      }
     }
-}
-</script>
+  </script>
+
 
  <!-- JS dependencies -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
