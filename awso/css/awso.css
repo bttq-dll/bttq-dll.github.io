@@ -239,7 +239,7 @@ h6 {
 }
 
 .list-group {
-  --bs-list-group-color: #15171c;
+  --bs-list-group-color: #061617;
   --bs-list-group-bg: rgba(0,0,0,0.5);
   --bs-list-group-border-color: #1e2027;
   --bs-list-group-border-width: var(--bs-border-width);
@@ -250,7 +250,7 @@ h6 {
   --bs-list-group-action-hover-color: var(--bs-emphasis-color);
   --bs-list-group-action-hover-bg: rgba(0,0,0,0.5);
   --bs-list-group-action-active-color: var(--bs-body-color);
-  --bs-list-group-action-active-bg: #15171c;
+  --bs-list-group-action-active-bg: #061617;
   --bs-list-group-disabled-color: var(--bs-secondary-color);
   --bs-list-group-disabled-bg: var(--bs-body-bg);
   --bs-list-group-active-color: #fff;
@@ -278,7 +278,7 @@ h6 {
 .btn:disabled {
   color: var(--bs-btn-disabled-color);
   pointer-events: none;
-  background-color: #15171c;
+  background-color: #061617;
   border-color: #1e2027;
   opacity: var(--bs-btn-disabled-opacity);
   line-height: 1.8;
@@ -287,12 +287,12 @@ h6 {
 .progress {
   --bs-progress-height: 1rem;
   --bs-progress-font-size: 0.75rem;
-  --bs-progress-bg: #15171c;
+  --bs-progress-bg: #061617;
   --bs-progress-border-radius: var(--bs-border-radius);
   --bs-progress-box-shadow: var(--bs-box-shadow-inset);
   border: 1px solid #1e2027;
   --bs-progress-bar-color: #fff;
-  --bs-progress-bar-bg: #7548e0;
+  --bs-progress-bar-bg: #62c3ed;
   --bs-progress-bar-transition: width 0.6s ease;
   display: flex;
   height: var(--bs-progress-height);
