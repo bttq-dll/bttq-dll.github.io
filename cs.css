@@ -1,0 +1,270 @@
+    /* Base styles */
+    :root {
+      --bs-text-muted: #636674;
+      --bs-gray-100: #1b1c22;
+      --bs-gray-200: #26272f;
+      --bs-gray-300: #363843;
+      --bs-gray-400: #464852;
+      --bs-gray-500: #636674;
+      --bs-gray-600: #808290;
+      --bs-gray-700: #9a9cae;
+      --bs-gray-800: #b5b7c8;
+      --bs-gray-900: #f5f5f5;
+      --bs-primary: #006ae6;
+      --bs-secondary: #363843;
+      --bs-success: #00a261;
+      --bs-info: #883fff;
+      --bs-warning: #c59a00;
+      --bs-danger: #e42855;
+      --bs-dark: #f9f9f9;
+    }
+    
+    body {
+      font-family: Inter, sans-serif;
+      background-size: contain;
+      background-position: center center;
+      background-repeat: repeat;
+      background-image: url("https://lobby.mom/awso/assets/grid.png");
+      line-height: 1.7em;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      min-height: 100vh;
+      margin: 0;
+      padding: 0;
+      background-color: #100f17;
+      color: #b4adc9;
+      display: flex;
+      flex-direction: column;
+    }
+    
+    /* Notification button */
+    .notify-btn {
+      background: #d3d2d8;
+      border-color: #d3d2d8;
+      font-weight: 725;
+      border-radius: 13px;
+      line-height: 1.9;
+      font-family: HeadingNowVariable, sans-serif;
+      color: #100f17;
+      text-transform: uppercase;
+      font-size: 16px;
+      font-variation-settings: "wdth" 650, "wght" 725;
+      cursor: pointer;
+      outline-width: 0;
+      outline-color: transparent;
+      outline-offset: 10px;
+      outline-style: solid;
+      transition-duration: 0.15s;
+      transition-property: outline-color, outline-offset, outline-width;
+      transition-timing-function: ease-out;
+      padding: 7px 16px 2px;
+      border: none;
+      display: inline-flex;
+      align-items: center;
+    }
+
+    .notify-btn:hover {
+      background: #fff;
+      border-color: #fff;
+      color: #100f17;
+      outline-color: rgba(255, 255, 255, 0.8);
+      outline-offset: 3px;
+      outline-width: 3px;
+    }
+
+    .notify-btn:active {
+      transform: scale(0.96);
+      background-color: #fff;
+    }
+
+    .notify-btn.subscribed {
+      background: #100f17;
+      color: #d3d2d8;
+    }
+
+    .notify-btn.subscribed:hover {
+      background: #100f17;
+      color: #fff;
+      outline-color: rgba(16, 15, 23, 0.8);
+    }
+
+    .status-text {
+      font-family: HeadingNowVariable, sans-serif;
+      font-size: 14px;
+      color: #d3d2d8;
+      font-variation-settings: "wdth" 600, "wght" 400;
+    }
+
+    .status-text.active {
+      color: #fff;
+      font-variation-settings: "wdth" 600, "wght" 600;
+    }
+    
+    /* Bot preview section */
+    .bot-preview {
+      background: transparent;
+      border-radius: 15px;
+      padding: 20px;
+      margin: 40px auto 30px;
+      max-width: 800px;
+      width: 90%;
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+    }
+    
+    .bot-preview-title {
+      font-family: HeadingNowVariable, sans-serif;
+      text-transform: capitalize;
+      text-align: center;
+      font-size: 18px;
+      color: #fff;
+      margin-bottom: 20px;
+      font-weight: 700;
+    }
+    
+    .bot-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 5px;
+      margin-bottom: 15px;
+    }
+    
+    .bot-card {
+      background: rgba(38, 39, 47, 0.7);
+      border-radius: 10px;
+      padding: 15px;
+      display: flex;
+      align-items: center;
+      transition: transform 0.3s ease;
+      border: 1px solid #464852;
+    }
+    
+    .bot-card:hover {
+      transform: translateY(-5px);
+      background: rgba(38, 39, 47, 0.85);
+    }
+    
+    .bot-avatar {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      border: 2px solid #00a261;
+      margin-right: 15px;
+      background: #363843;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    
+    .bot-avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    
+    .bot-info {
+      flex-grow: 1;
+    }
+    
+    .bot-name {
+      font-weight: 600;
+      color: #fff;
+      margin-bottom: 4px;
+      font-size: 16px;
+      font-family: "Inter", sans-serif;
+    }
+    
+    .bot-status {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    
+
+    
+    .bot-action {
+      margin-left: 10px;
+    }
+    
+    .copy-btn {
+        font-size: 15px
+    }
+    
+    .copy-btn:hover {
+
+    }
+    
+    /* Timer section */
+    .timer-section {
+      background: rgba(27, 28, 34, 0.7);
+      border-radius: 10px;
+      padding: 15px;
+      border: 1px solid #363843;
+    }
+    
+    .timer-container {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    
+    .timer-btn {
+      background: linear-gradient(90deg, #883fff, #006ae6);
+      border: none;
+      border-radius: 10px;
+      color: white;
+      padding: 10px 15px;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+    
+    .progress {
+      height: 10px;
+      background: #15171c;
+      border-radius: 5px;
+      overflow: hidden;
+      border: 1px solid #1e2027;
+    }
+    
+    
+    /* Animations */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    
+    .bot-card {
+      animation: fadeIn 0.5s ease forwards;
+    }
+    
+    /* Centered content */
+    .center-content {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+      text-align: center;
+    }
+    
+    /* Footer */
+    .footer {
+      padding: 20px;
+      text-align: center;
+      color: #808290;
+      font-size: 13px;
+    }
+    
+    .footer a {
+      color: #b5b7c8;
+      text-decoration: none;
+    }
+    
+    .footer a:hover {
+      color: #fff;
+    }

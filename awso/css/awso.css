@@ -5,7 +5,7 @@
   font-style: normal;
   font-stretch: normal;
   font-display: swap;
-  src: url(https://lobby.mom/awso/assets/f/HeadingNowVariable.woff2) format("woff2");
+  src: url(f/HeadingNowVariable.woff2) format("woff2");
   /* Unicode ranges remain the same */
 }
 @font-face {
@@ -114,7 +114,7 @@
   --bs-info-light: #272134;
   --bs-warning-light: #242320;
   --bs-danger-light: #302024;
-  --bs-dark-light: #1e2027;
+  --bs-dark-light: #1e2724;
   --bs-light-light: #1f212a;
   --bs-primary-inverse: #ffffff;
   --bs-secondary-inverse: #ffffff;
@@ -193,7 +193,6 @@ body {
   transform: none;
 }
 
-
 .btn:first-child:active,
 :not(.btn-check) + .btn:active {
   color: #100f17;
@@ -231,26 +230,25 @@ h6 {
 }
 
 .copy-btn {
-  
 }
 
 :root {
-  --bs-card-border-color: #1e2027;
+  --bs-card-border-color: #1e2724;
 }
 
 .list-group {
-  --bs-list-group-color: #061617;
-  --bs-list-group-bg: rgba(0,0,0,0.5);
-  --bs-list-group-border-color: #1e2027;
+  --bs-list-group-color: #061718;
+  --bs-list-group-bg: rgba(0, 0, 0, 0.5);
+  --bs-list-group-border-color: #1e2724;
   --bs-list-group-border-width: var(--bs-border-width);
   --bs-list-group-border-radius: var(--bs-border-radius);
   --bs-list-group-item-padding-x: 1rem;
   --bs-list-group-item-padding-y: 0.5rem;
   --bs-list-group-action-color: var(--bs-secondary-color);
   --bs-list-group-action-hover-color: var(--bs-emphasis-color);
-  --bs-list-group-action-hover-bg: rgba(0,0,0,0.5);
+  --bs-list-group-action-hover-bg: rgba(0, 0, 0, 0.5);
   --bs-list-group-action-active-color: var(--bs-body-color);
-  --bs-list-group-action-active-bg: #061617;
+  --bs-list-group-action-active-bg: #061718;
   --bs-list-group-disabled-color: var(--bs-secondary-color);
   --bs-list-group-disabled-bg: var(--bs-body-bg);
   --bs-list-group-active-color: #fff;
@@ -266,7 +264,8 @@ h6 {
 }
 
 .text-body-secondary {
-  color: #808290 !important;
+  color: #8ba398 !important;
+  font-weight: 600;
 }
 
 .text-success {
@@ -278,8 +277,8 @@ h6 {
 .btn:disabled {
   color: var(--bs-btn-disabled-color);
   pointer-events: none;
-  background-color: #061617;
-  border-color: #1e2027;
+  background-color: #061718;
+  border-color: #1e2724;
   opacity: var(--bs-btn-disabled-opacity);
   line-height: 1.8;
 }
@@ -287,12 +286,12 @@ h6 {
 .progress {
   --bs-progress-height: 1rem;
   --bs-progress-font-size: 0.75rem;
-  --bs-progress-bg: #061617;
+  --bs-progress-bg: #061718;
   --bs-progress-border-radius: var(--bs-border-radius);
   --bs-progress-box-shadow: var(--bs-box-shadow-inset);
-  border: 1px solid #1e2027;
+  border: 1px solid #1e2724;
   --bs-progress-bar-color: #fff;
-  --bs-progress-bar-bg: #62c3ed;
+  --bs-progress-bar-bg: #69c8ec;
   --bs-progress-bar-transition: width 0.6s ease;
   display: flex;
   height: var(--bs-progress-height);
@@ -303,7 +302,7 @@ h6 {
 }
 
 .awsot {
-  color: #b4adc9;
+  color: #cecece;
   opacity: 1;
   font-weight: 600;
   font-size: 22px;
@@ -312,7 +311,7 @@ h6 {
 }
 
 .awsot span {
-      background: -webkit-linear-gradient(#ff97e0, #ffffff);
+  background: -webkit-linear-gradient(#0dc3fa, #ffffff);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
@@ -383,15 +382,9 @@ h6 {
 .brzero h6 {
   color: #000;
   font-family: Inter, sans-serif !important;
-
- 
 }
 .nosupport {
-  background: linear-gradient(
-    90deg,
-    rgb(119, 25, 25) 0%,
-    rgb(56, 18, 18) 100%
-  );
+  background: linear-gradient(90deg, rgb(119, 25, 25) 0%, rgb(56, 18, 18) 100%);
   border: none;
   color: #fff;
   font-weight: 725;
@@ -403,16 +396,10 @@ h6 {
 .nosupport h6 {
   color: #fff;
   font-family: Inter, sans-serif !important;
-
- 
 }
 
 .discord {
-  background: linear-gradient(
-    90deg,
-    #5865F2 0%,
-    #4953c2 100%
-  );
+  background: linear-gradient(90deg, #5865f2 0%, #4953c2 100%);
   border: none;
   color: #fff;
   font-weight: 725;
@@ -424,49 +411,44 @@ h6 {
 .discord h6 {
   color: #fff;
   font-family: Inter, sans-serif !important;
-
- 
 }
 
-
 .backblur {
-    backdrop-filter: blur(5px);
-    -webkit-backdrop-filter: blur(5px);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
 }
 
 .fnlb {
-  background: #000 url("https://lobby.mom/awso/assets/blue-plain.gif") no-repeat;
+  background: rgba(0, 0, 0, 0.5) url("../assets/blue-plain.gif") no-repeat;
   border: none;
   color: #fff;
   font-weight: 725;
   line-height: 1.2;
   font-family: HeadingNowVariable, sans-serif;
   font-size: 16px;
-  border: 1px solid #1e2027;
+  border: 1px solid #1e2724;
 }
 
 .fnlb h6 {
   color: #fff;
   font-family: Inter, sans-serif !important;
-
- 
 }
 
 .bots-ready {
-    font-size: 22px;
-     background: -webkit-linear-gradient(#ffffff, #ffe159);
+  font-size: 22px;
+  background: -webkit-linear-gradient(#ffffff, #59ffd5);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-    font-weight: 725;
+  font-weight: 725;
   line-height: 1.2;
   font-family: HeadingNowVariable, sans-serif;
 }
 
 @keyframes smoothSlider {
-    0% {
-        transform: translateX(0);
-    }
-    100% {
-        transform: translateX(-1200px);
-    }
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-1200px);
+  }
 }
