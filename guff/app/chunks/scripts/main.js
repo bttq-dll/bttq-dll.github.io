@@ -107,7 +107,7 @@ function initCarousel() {
           <div class="bot-card">
             <div class="bot-avatar">
               <div class="avatar-img-wrapper">
-                <img src="https://fortnite.gg/img/items/209/icon.png" alt="${bot}" />
+                <img src="app/assets/icon.png" alt="${bot}" />
               </div>
             </div>
             <div class="bot-info">
