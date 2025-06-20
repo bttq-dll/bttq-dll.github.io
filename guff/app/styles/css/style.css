@@ -1,0 +1,580 @@
+@import url("https://rsms.me/inter/inter.css");
+
+@font-face {
+  font-family: HeadingNowVariable;
+  font-style: normal;
+  font-stretch: normal;
+  font-display: swap;
+  src: url(../../chunks/fonts/HeadingNowVariable.woff2) format("woff2");
+}
+
+/* CSS Variables */
+:root {
+  --font-body: "Inter", sans-serif;
+  --font-heading: "HeadingNowVariable", sans-serif;
+
+  --color-text: #2c2c2c;
+  --color-heading: #000;
+  --color-white: #fff;
+  --color-body: #0b0b0b;
+  --color-bg: linear-gradient(#ffff, #ec91f5 86%, #ec91f5);
+  --color-card-bg: rgba(19, 19, 19, 1);
+  --color-avatar-bg: #363843;
+  --color-avatar-border: #00a261;
+  --color-btn-bg: #121214;
+  --color-btn-text: #fff;
+  --color-btn-text-alt: #2c2c2c;
+  --color-outline-hover: rgba(255, 255, 255, 0.8);
+  --color-btn-primary: #d3d2d8;
+  --color-btn-primary-hover: #fff;
+  --color-btn-primary-text: #100f17;
+
+  --text-opacity: 0.7;
+
+  --font-size-body: 14px;
+  --font-size-h1: 2.75em;
+  --font-size-btn: 16px;
+  --font-size-copy-btn: 15px;
+  --font-size-bot-name: 18px;
+  --font-style-bot-name: capitalize;
+  --awso-fortnite-style: italic;
+
+  --font-variation-light-wide: "wdth" 600, "wght" 700;
+  --font-weight-bold: 700;
+  --font-weight-semibold: 600;
+  --font-weight-btn: 725;
+
+  --line-height-body: 1.7em;
+  --line-height-h1: 1.25;
+  --line-height-btn: 1.9;
+
+  --spacing-header-padding-top: 150px;
+  --spacing-header-padding-bottom: 100px;
+  --spacing-btn-margin-top: 30px;
+  --spacing-heading-margin-bottom: 25px;
+  --padding-btn: 7px 16px 2px;
+  --gap-status: 8px;
+
+  --radius-sm: 10px;
+  --radius-md: 13px;
+  --avatar-size: 50px;
+
+  --color-avatar-fortnite: linear-gradient(#1686e4 35%, #253a95 100%);
+  --box-shadow-btn: rgba(17, 17, 26, 0.1) 0px 8px 24px,
+    rgba(17, 17, 26, 0.1) 0px 16px 56px, rgba(17, 17, 26, 0.1) 0px 24px 80px;
+
+  --shape-height: 500px;
+}
+
+/* Base Styles */
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+  -webkit-user-drag: none;
+  -webkit-user-select: none;
+}
+
+* {
+  font-family: var(--font-body);
+}
+
+body {
+  font-size: var(--font-size-body);
+  color: var(--color-text);
+  line-height: var(--line-height-body);
+  height: 100vh;
+  overflow-x: hidden;
+  margin: 0;
+  padding: 0;
+  background: var(--color-body);
+  position: relative;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Header Section */
+.header-guff {
+  background: var(--color-bg);
+  position: relative;
+  overflow: hidden;
+  padding: var(--spacing-header-padding-top) 0
+    var(--spacing-header-padding-bottom) 0;
+}
+
+.header-guff .shape {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: var(--shape-height);
+  z-index: 1; /* This is fine as is */
+}
+
+img {
+  max-width: 100%;
+}
+
+.header-guff .header-inner {
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  z-index: 2; /* Increase this to ensure content stays above both shape and video */
+}
+
+.header-guff .header-text h1 {
+  font-weight: var(--font-weight-bold);
+  font-variation-settings: var(--font-variation-light-wide);
+  color: var(--color-btn-text-alt);
+  margin-bottom: 4px;
+  font-size: var(--font-size-h1);
+  font-family: var(--font-heading);
+}
+
+h1,
+.h1 {
+  font-size: var(--font-size-h1);
+  line-height: var(--line-height-h1);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-heading);
+  margin: 0;
+}
+
+.header-guff .header-text p {
+  color: var(--color-heading);
+  opacity: var(--text-opacity);
+}
+
+.header-guff .header-text .guff-discord {
+  margin-top: var(--spacing-btn-margin-top);
+}
+
+.header-guff .header-text .guff-discord {
+  background: var(--color-btn-bg);
+  color: var(--color-btn-text);
+  box-shadow: var(--box-shadow-btn);
+}
+
+.header-guff .bot-screen {
+  text-align: center;
+  position: relative;
+  /* Remove z-index: -9; */
+  z-index: 0; /* Add this to place it under the shape but above the background */
+}
+
+.header-guff .bot-screen video {
+  max-width: 100%;
+  max-height: 510px;
+  display: block;
+  margin: 0 auto;
+  position: relative;
+}
+
+/* Utilities */
+.rounded-1 {
+  border-radius: var(--radius-sm) !important;
+}
+.text-decoration-none {
+  text-decoration: none !important;
+}
+.h-100 {
+  height: 100% !important;
+}
+.border-0 {
+  border: 0 !important;
+}
+
+/* Cards */
+.card-body {
+  background: #000;
+  border-radius: var(--radius-sm) !important;
+}
+
+.bot-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 5px;
+  margin-bottom: 15px;
+}
+
+.bot-card {
+  background: var(--color-card-bg);
+  border-radius: var(--radius-sm);
+  padding: 15px;
+  display: flex;
+  align-items: center;
+  transition: all 0.3s ease;
+  height: 100%;
+
+}
+
+.bot-avatar {
+  width: var(--avatar-size);
+  height: var(--avatar-size);
+  border-radius: 50%;
+  border: 2px solid var(--color-card-bg);
+  outline: 2px solid var(--color-avatar-border);
+  margin-right: 15px;
+  background: var(--color-avatar-fortnite);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: visible;
+  position: relative;
+}
+
+.avatar-img-wrapper {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.avatar-img-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.bot-avatar::after {
+  content: "";
+  position: absolute;
+  bottom: -7px;
+  right: 0px;
+  width: 16px;
+  height: 16px;
+  background-color: #43b581;
+  border: 3px solid var(--color-card-bg);
+  border-radius: 50%;
+  z-index: 10;
+}
+
+.bot-info {
+  flex-grow: 1;
+}
+
+.bot-name-with-icon {
+  display: flex;
+  align-items: center;
+  gap: 6px; /* spacing between name and icon */
+}
+
+.verified-icon {
+  width: 18px;
+  height: 18px;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.playwithguff {
+  font-weight: var(--font-weight-bold);
+  font-variation-settings: var(--font-variation-light-wide);
+  color: var(--color-body);
+  font-size: var(--font-size-bot-name);
+  font-family: var(--font-heading);
+  text-transform: var(--font-style-bot-name);
+}
+
+.bot-name {
+  font-weight: var(--font-weight-bold);
+  font-variation-settings: var(--font-variation-light-wide);
+  color: var(--color-white);
+  font-size: var(--font-size-bot-name);
+  font-family: var(--font-heading);
+  text-transform: var(--font-style-bot-name);
+  font-style: var(--awso-fortnite-style);
+}
+
+.bot-action {
+  margin-left: 10px;
+}
+
+/* Buttons */
+.copy-btn {
+  font-size: var(--font-size-copy-btn);
+}
+
+.btn-primary {
+  background: var(--color-btn-primary);
+  border-color: var(--color-btn-primary);
+  font-weight: var(--font-weight-btn);
+  border-radius: var(--radius-md);
+  line-height: var(--line-height-btn);
+  font-family: var(--font-heading);
+  color: var(--color-btn-primary-text);
+  text-transform: uppercase;
+  font-size: var(--font-size-btn);
+  font-variation-settings: "wdth" 650, "wght" var(--font-weight-btn);
+  cursor: pointer;
+  outline-width: 0;
+  outline-color: transparent;
+  outline-offset: 10px;
+  outline-style: solid;
+  transition-duration: 0.15s;
+  transition-property: outline-color, outline-offset, outline-width;
+  transition-timing-function: ease-out;
+  padding: var(--padding-btn);
+}
+
+.btn-primary:hover {
+  background: var(--color-btn-primary-hover);
+  border-color: var(--color-btn-primary-hover);
+  color: var(--color-btn-primary-text);
+  outline-color: var(--color-outline-hover);
+  outline-offset: 3px;
+  outline-width: 3px;
+  text-decoration: none !important;
+  padding: var(--padding-btn);
+}
+
+.btn:first-child:active,
+:not(.btn-check) + .btn:active {
+  color: var(--color-btn-primary-text);
+  background-color: var(--color-btn-primary-hover);
+  border-color: none;
+}
+
+/* From Uiverse.io by adamgiebl */
+.guff-discord {
+  background: #5865f2;
+  color: var(--color-white);
+  padding: 0.35em;
+  padding-left: 1.2em;
+  border-radius: 0.9em;
+  border: none;
+  display: flex;
+  align-items: center;
+  box-shadow: inset 0 0 1.6em -0.6em #5865f2;
+  overflow: hidden;
+  position: relative;
+  height: 2.8em;
+  padding-right: 3.3em;
+  cursor: pointer;
+  font-size: var(--font-size-bot-name);
+  font-family: var(--font-heading);
+  font-weight: var(--font-weight-bold);
+  font-variation-settings: var(--font-variation-light-wide);
+}
+
+.guff-discord .icon {
+  background: white;
+  margin-left: 1em;
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 2.2em;
+  width: 2.2em;
+  border-radius: 0.7em;
+  box-shadow: 0.1em 0.1em 0.6em 0.2em #5865f2;
+  right: 0.3em;
+  transition: all 0.3s;
+}
+
+.guff-discord:hover .icon {
+  width: calc(100% - 0.6em);
+}
+
+.guff-discord .icon svg {
+  width: 1.1em;
+  transition: transform 0.3s;
+  color: #000;
+}
+
+.guff-discord:hover .icon svg {
+  transform: translateX(0.1em);
+  color: #5865f2;
+}
+
+.guff-discord:active .icon {
+  transform: scale(0.95);
+  color: #5865f2;
+}
+
+.play-section-wrapper {
+  position: relative;
+  margin-top: -100px; /* Adjust this value to control how much it overlaps */
+  z-index: 10; /* Ensure it stays above the video */
+  padding-bottom: 50px; /* Add some space below */
+}
+
+/* Optional: Add a subtle gradient fade effect */
+.play-section-wrapper::before {
+  content: "";
+  position: absolute;
+  top: -50px;
+  left: 0;
+  right: 0;
+  height: 50px;
+  pointer-events: none;
+}
+
+
+.bot-carousel-container {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+}
+
+.bot-carousel-track {
+  display: flex;
+  transition: transform 0.5s ease;
+  will-change: transform;
+}
+
+.bot-batch {
+  flex: 0 0 100%;
+  display: flex;
+  gap: 15px;
+  padding: 0 10px;
+  box-sizing: border-box;
+}
+
+.bot-slide {
+  flex: 1;
+  min-width: 0;
+}
+
+
+/* Navigation buttons */
+.btn-prev, .btn-next {
+  background: var(--color-btn-text);
+  color: var(--color-body);
+  border: none;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-prev:hover, .btn-next:hover {
+  background: var(--color-avatar-bg);
+  color: var(--color-white);
+}
+
+
+.loader-wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--color-body);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  opacity: 1;
+  transition: opacity 0.8s ease-out, visibility 0.8s ease-out;
+}
+
+.loader-content {
+  text-align: center;
+  transform: translateY(-20px);
+}
+
+.loader-logo {
+  width: 180px;
+  height: auto;
+  margin-bottom: 30px;
+  animation: pulse 1.5s infinite ease-in-out;
+}
+
+.loader-bar {
+  width: 200px;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 2px;
+  margin: 0 auto;
+  /* overflow: hidden; REMOVE THIS */
+  position: relative; /* needed if you want to absolutely position glow later */
+}
+
+
+.loader-progress {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, #ec91f5, #97d0ff, #ffd460);
+  border-radius: 2px;
+  transition: width 0.3s ease;
+  box-shadow: 
+    0 0 64px #ec91f5, 
+    0 0 30px #97d0ff, 
+    0 0 10px #ffd460;
+}
+
+
+/* Animation for logo */
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+/* Hide content initially */
+body.loading #hero,
+body.loading .play-section-wrapper {
+  opacity: 0;
+  visibility: hidden;
+}
+
+body.loaded #hero,
+body.loaded .play-section-wrapper {
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 0.8s ease-in, visibility 0.8s ease-in;
+}
+
+.toast {
+    --bs-toast-zindex: 1090;
+    --bs-toast-padding-x: 0.75rem;
+    --bs-toast-padding-y: 0.5rem;
+    --bs-toast-spacing: 1.5rem;
+    --bs-toast-max-width: 350px;
+    --bs-toast-font-size: 0.875rem;
+    --bs-toast-color: ;
+    --bs-toast-bg: #000000 !important;
+    --bs-toast-border-width: var(--bs-border-width);
+    --bs-toast-border-color: var(--bs-border-color-translucent);
+    --bs-toast-border-radius: var(--bs-border-radius);
+    --bs-toast-header-color: var(--bs-secondary-color);
+    --bs-toast-header-bg: rgba(var(--bs-body-bg-rgb), 0.85);
+    --bs-toast-header-border-color: transparent !important;
+    width: var(--bs-toast-max-width);
+    max-width: 100%;
+    font-size: var(--bs-toast-font-size);
+    color: var(--bs-toast-color);
+    pointer-events: auto;
+    background-color: var(--bs-toast-bg);
+    background-clip: padding-box;
+    border: none !important;
+    box-shadow: rgba(255, 119, 255, 0.56) 0px 22px 70px 4px !important;
+    border-radius: var(--bs-toast-border-radius);
+}
+
+.bg-dark {
+    background: #000 !important;
+    background-color: #000 !important;
+    border:1px solid rgba(255, 255, 255, 0.1) !important;
+    
+
+}
+
+.text-success {
+    color: #ffb1f7 !important;
+}
